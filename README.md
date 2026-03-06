@@ -1,12 +1,14 @@
-# SQL Data Cleaning Project – Layoffs Dataset
+# Global Layoffs Data Analysis using SQL
 
-## Overview
+## Project Overview
 
-This project demonstrates a complete data cleaning workflow using SQL. The dataset contains information about company layoffs, including company name, location, industry, total layoffs, percentage laid off, funding, and date. The goal is to clean and prepare the raw dataset so that it can be used for accurate data analysis.
+This project demonstrates an end-to-end data analysis workflow using SQL on a global layoffs dataset. The project involves cleaning raw data, standardizing inconsistent values, handling missing information, and performing exploratory data analysis (EDA) to identify trends and patterns in layoffs across companies, industries, and time.
 
-## Dataset
+The goal is to transform a raw dataset into a structured and reliable dataset that can be used for meaningful analysis and business insights.
 
-The dataset includes the following fields:
+## Dataset Description
+
+The dataset contains information about layoffs across companies worldwide. The key attributes include:
 
 * Company
 * Location
@@ -14,55 +16,79 @@ The dataset includes the following fields:
 * Total Laid Off
 * Percentage Laid Off
 * Date
-* Stage
+* Company Stage
 * Country
 * Funds Raised (Millions)
 
-## Data Cleaning Steps
+## Project Structure
+
+Data Cleaning Script
+
+
+Exploratory Data Analysis Script
+
+
+## Data Cleaning Process
 
 ### 1. Creating a Staging Table
 
-A staging table (`layoffs_staging`) is created to store a copy of the original dataset. This ensures that the raw dataset remains unchanged while cleaning operations are performed.
+A staging table was created to store a copy of the raw dataset. This ensures that the original dataset remains unchanged during cleaning.
 
 ### 2. Removing Duplicate Records
 
-Duplicate rows are identified using the `ROW_NUMBER()` window function and removed from the dataset to maintain data accuracy.
+Duplicate rows were identified using the `ROW_NUMBER()` window function and removed to ensure data accuracy.
 
 ### 3. Standardizing Data
 
-Inconsistent values are standardized to maintain uniformity:
+Several inconsistencies were corrected:
 
-* Trimmed unnecessary spaces from company names.
-* Standardized industry values (e.g., variations of "crypto" converted to "Crypto").
-* Cleaned country names by removing unnecessary characters.
-* Converted the date column into proper DATE format.
+* Removed extra spaces from company names
+* Standardized industry names (e.g., variations of "crypto" converted to "Crypto")
+* Cleaned country names by removing punctuation
+* Converted the date column from text format to SQL DATE format
 
-### 4. Handling Missing or Null Values
+### 4. Handling Missing Values
 
-Missing values were identified and handled appropriately:
+Missing and blank values were handled by:
 
-* Blank industry values were converted to NULL.
-* Missing industry values were populated using data from similar records within the same company.
-* Rows with insufficient information were removed.
+* Converting empty values into NULL
+* Filling missing industry values using other records of the same company
+* Removing rows with insufficient information
 
 ### 5. Final Dataset Preparation
 
-After cleaning the data, unnecessary columns such as the duplicate identifier (`row_num`) were removed to create a clean dataset ready for analysis.
+Helper columns used during cleaning (such as duplicate row identifiers) were removed to produce a final clean dataset ready for analysis.
+
+## Exploratory Data Analysis (EDA)
+
+After cleaning the data, several analytical queries were performed to understand layoffs trends.
+
+Key analysis performed:
+
+* Identified companies with the highest layoffs
+* Analyzed layoffs by industry
+* Examined layoffs trends by year
+* Identified companies with 100% layoffs
+* Analyzed monthly layoffs trends
+* Compared layoffs with funding raised by companies
 
 ## Skills Demonstrated
 
 * SQL Data Cleaning
 * Window Functions (ROW_NUMBER)
-* Data Standardization
-* Handling Missing Values
 * Data Transformation
-* Table Manipulation
+* Handling Missing Values
+* Exploratory Data Analysis (EDA)
+* Aggregation and Grouping
+* Time-based Analysis
 
 ## Tools Used
 
-* MySQL
 * SQL
+* MySQL
 
 ## Outcome
 
-The final cleaned dataset is consistent, accurate, and ready for exploratory data analysis and visualization in tools such as Power BI, Tableau, or Python.
+The project demonstrates how raw data can be transformed into a clean dataset and analyzed to uncover meaningful insights about layoffs trends across companies, industries, and time periods.
+
+This project reflects real-world data analyst tasks including data cleaning, data preparation, and exploratory analysis.
